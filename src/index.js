@@ -12,10 +12,6 @@ import './index.css';
 import SudokuSolver from './sudokusolver.js';
 
 class Square extends React.Component {
-    constructor(props) {
-        super(props);
-    };
-
      render() {
         return (
             <button className="square"

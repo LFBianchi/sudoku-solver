@@ -7,28 +7,28 @@ export class SudokuSolver {
     findNextEmpty() {
         for (let i = 0; i < this.mem[0].length; i++) {
             for (let j = 0; j < this.mem[0].length; j++) {
-                if (this.mem[i][j] == 0) {
+                if (this.mem[i][j] === 0) {
                     return [i, j];
-                };
-            };
-        };
+                }
+            }
+        }
     };
 
     checkNumInRow(num, row) {
         for (let j = 0; j < this.mem[0].length; j++) {
-            if (this.mem[row][j] == num) {
+            if (this.mem[row][j] === num) {
                 return true;
-            };
-        };
+            }
+        }
         return false;
     };
 
     checkNumInColumn(num, column) {
         for (let i = 0; i < this.mem[0].length; i++) {
-            if (this.mem[i][column] == num) {
+            if (this.mem[i][column] === num) {
                 return true;
-            };
-        };
+            }
+        }
         return false;
     };
 
@@ -37,19 +37,19 @@ export class SudokuSolver {
         let startCol = 0;
         //In which 3x3 square is the number located?
         if (row > 5) {startRow = 6}
-        else if (row > 2) {startRow = 3};
+        else if (row > 2) {startRow = 3}
 
         if (column > 5) {startCol = 6}
-        else if (column > 2) {startCol = 3};
+        else if (column > 2) {startCol = 3}
 
         //Iterate over the square.
         for (let i = startRow; i < startRow + 3; i++) {
             for (let j = startCol; j < startCol + 3; j++) {
-                if (this.mem[i][j] == num) {
+                if (this.mem[i][j] === num) {
                     return true;
-                };
-            };
-        };
+                }
+            }
+        }
         return false;
     };
 
@@ -67,9 +67,9 @@ export class SudokuSolver {
                 if(this.mem[i][j] === num){
                     countRow++;
                     if (countRow > 1) { return true }
-                };
-            };
-        };
+                }
+            }
+        }
 
         //Check the columns
         for (let j = 0; j < this.mem.length; j++) {
@@ -78,9 +78,9 @@ export class SudokuSolver {
                 if (this.mem[i][j] === num) {
                     countCol++;
                     if (countCol > 1) { return true;}
-                };
-            };
-        };
+                }
+            }
+        }
 
         //Check the 9 squares
         for (let squareI = 0; squareI < this.mem.length; squareI += 3) {
@@ -91,11 +91,11 @@ export class SudokuSolver {
                         if (this.mem[i][j] === num) {
                             countSquare++;
                             if(countSquare > 1) {return true}
-                        };
-                    };
-                };
-            };
-        };
+                        }
+                    }
+                }
+            }
+        }
 
         return false;
     };
@@ -139,7 +139,7 @@ export class SudokuSolver {
                 next = this.findNextEmpty();
                 row = next[0];
                 col = next[1];
-            };
+            }
 
 
 
@@ -156,14 +156,13 @@ export class SudokuSolver {
                     }
                 }
                 this.count++;
-            };
-        };
+            }
+        }
 
-        let answer = [...this.mem];
-        return answer;
+        return [...this.mem];
     };
 
-};
+}
 
 export {SudokuSolver as default};
 
